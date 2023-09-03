@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Gerador de Nomes Engraçados</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f1f1f1;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #FF0000;
+    }
+
+    input[type="text"], input[type="radio"] {
+      margin: 10px;
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #FF0000;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #nomeGerado {
+      font-size: 20px;
+      margin-top: 20px;
+    }
+  </style>
+  <script>
+    function gerarNome() {
+      var adjetivosLindao = ["Super Lindão", "Maravilhoso", "Magnífico"];
+      var adjetivosFeio = ["Super Feio", "Horrendo", "Terrível"];
+      var adjetivosEstranho = ["Banana com Pernas", "Abacaxi Maluco", "Melancia Saltitante"];
+
+      var nome = document.getElementById("nome").value;
+
+      var adjetivo;
+
+      if (document.getElementById("lindao").checked) {
+        adjetivo = adjetivosLindao[Math.floor(Math.random() * adjetivosLindao.length)];
+      } else if (document.getElementById("feio").checked) {
+        adjetivo = adjetivosFeio[Math.floor(Math.random() * adjetivosFeio.length)];
+      } else if (document.getElementById("estranho").checked) {
+        adjetivo = adjetivosEstranho[Math.floor(Math.random() * adjetivosEstranho.length)];
+      }
+
+      if (nome !== "") {
+        var nomeGerado = adjetivo + " " + nome;
+        document.getElementById("nomeGerado").textContent = nomeGerado;
+      } else {
+        document.getElementById("nomeGerado").textContent = "Insira um nome válido.";
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Gerador de Nomes Engraçados</h1>
+  <input type="text" id="nome" placeholder="Digite um nome">
+  <br>
+  <label>
+    <input type="radio" name="adjetivo" id="lindao" checked> Super Lindão
+  </label>
+  <label>
+    <input type="radio" name="adjetivo" id="feio"> Super Feio
+  </label>
+  <label>
+    <input type="radio" name="adjetivo" id="estranho"> Banana com Pernas
+  </label>
+  <br>
+  <button onclick="gerarNome()">Gerar Nome</button>
+  <br>
+  <p id="nomeGerado"></p>
+</body>
+</html>
